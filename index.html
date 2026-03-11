@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naar — Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #E52A2A;
+            --red-dark: #C92020;
+            --white: #FFFFFF;
+            --off-white: #F7F5F3;
+            --gray-100: #F0EDEA;
+            --gray-300: #C5C0BA;
+            --gray-600: #6B6560;
+            --gray-900: #1A1715;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            color: var(--gray-900);
+            background: var(--off-white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--red);
+            color: var(--white);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--off-white);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .logo-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* ── Content ── */
+        .content {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* ── Contact Card ── */
+        .contact-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .contact-card h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .contact-card > p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--gray-100);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--gray-900);
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .contact-link:hover {
+            background: var(--gray-300);
+        }
+
+        .contact-link .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--red);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-link .icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .contact-link span {
+            font-size: 0.95rem;
+        }
+
+        /* ── FAQ ── */
+        .faq-section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gray-300);
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+            color: var(--red);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem 3rem;
+            color: var(--gray-300);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+
+        /* ── Animation ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .fade-up:nth-child(2) { animation-delay: 0.08s; }
+        .fade-up:nth-child(3) { animation-delay: 0.16s; }
+        .fade-up:nth-child(4) { animation-delay: 0.24s; }
+        .fade-up:nth-child(5) { animation-delay: 0.32s; }
+        .fade-up:nth-child(6) { animation-delay: 0.4s; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="logo-icon">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 4L26 14L22 14L28 24L8 24L14 14L10 14L18 4Z" fill="white"/>
+        </svg>
+    </div>
+    <h1>Naar Support</h1>
+    <p>We're here to help you get the most out of your training.</p>
+</header>
+
+<main class="content">
+
+    <div class="contact-card fade-up">
+        <h2>Get in Touch</h2>
+        <p>Have a question, found a bug, or want to request a feature? Reach out and we'll get back to you as soon as we can.</p>
+        <a href="mailto:support@naar.app" class="contact-link">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            <span>support@naar.app</span>
+        </a>
+    </div>
+
+    <section class="faq-section">
+        <h2 class="fade-up">Frequently Asked Questions</h2>
+
+        <div class="faq-item fade-up">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                What equipment do I need?
+            </button>
+            <div class="faq-answer">
+                <p>Naar is designed for minimal equipment. All you need is a set of adjustable dumbbells and a workout bench. You can configure your exact dumbbell range in Settings and Naar will adapt every workout to fit.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-up">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How long are the workouts?
+            </button>
+            <div class="faq-answer">
+                <p>Each full-body session is designed to take around 45 minutes, including rest periods between supersets. You can move through at your own pace.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-up">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How does progressive overload work?
+            </button>
+            <div class="faq-answer">
+                <p>Naar tracks your weights and reps each session. When you complete all sets at a given weight, it nudges you to increase the load next time. This gradual progression is the most effective way to build strength.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-up">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Is Naar suitable for beginners?
+            </button>
+            <div class="faq-answer">
+                <p>Absolutely. Naar is built with beginners in mind. Every exercise includes form tips, and the superset structure keeps things simple and efficient. Start with light weights and let progressive overload guide you.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-up">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How do I reset my data?
+            </button>
+            <div class="faq-answer">
+                <p>Go to Settings in the app and scroll to the bottom. You'll find an option to reset your workout history and personal records. Please note this action cannot be undone.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 Naar. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
